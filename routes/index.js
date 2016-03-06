@@ -2,15 +2,12 @@ var express = require('express');
 var router = express.Router();
 var Message = require('../models/message');
 
-// isPalindrome to be moved somewhere else
 var isPalindrome = function(content)  {
     content = content.trim().toLowerCase();
     return content == content.split('').reverse().join('');
 }
 
-
-
-/* Middleware, all requests will come through here first. */
+/* Middleware: all REST requests will come through here first. */
 router.use(function(req, res, next) {
     console.log("Received a " + req.method + " request.");
     next();
