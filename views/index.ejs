@@ -1,12 +1,127 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+    var messages = null;
+    var indexOfSelectedMessage = null;
+
+    $(function()    {
+        $.get("api/messages", function(data)    {
+            messages = data;
+            fillDropdown();
+        });
+    });
+
+    function fillDropdown() {
+        var list = document.getElementById("classDropdown");
+        for (var i = 0; i < messages.length; i++)  {
+            var opt = messages[i].title;
+            var li = document.createElement("li");
+            li.id = i;
+            var link = document.createElement("a");
+            var text = document.createTextNode(opt);
+            link.appendChild(text);
+            link.href = "#";
+            li.appendChild(link);
+            list.appendChild(li);
+        }
+        setDropdown();
+    }
+
+    function setDropdown()  {
+        $(".dropdown-menu li a").click(function(){
+            $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+            $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+            indexOfSelectedMessage = parseInt(this.parentNode.id);
+            if(this.parentNode.id == "")  {
+                $("#myModal").modal('show');
+            }
+            addMessageContent(indexOfSelectedMessage);
+        });
+    }
+
+    function addMessageContent(indexOfSelectedMessage)    {
+        var selctedMessage = messages[indexOfSelectedMessage];
+        var messageContent = $('#message-content');
+        var isPalindrome = $('#isPalindrome');
+
+        // first clear text area
+        messageContent.text("");
+        isPalindrome.text("");
+
+        // set information from the selected message's data
+        messageContent.text(selctedMessage.content);
+        isPalindrome.text("Message is palindrome: " + selctedMessage.isPalindrome);
+    }
+
+    function addNewClass()  {
+        var newMessageTitle = $('#new-message-title').val();
+        var newMessageContent = $('#new-message-content').val();
+        $.ajax({
+            type: 'POST',
+            url: '/api/messages',
+            data: {
+                title: newMessageTitle.toString(),
+                content: newMessageContent.toString(),
+            },
+            complete: function () {
+                window.location.reload(true);
+            }
+        });
+    }
+</script>
+<head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-
-  </body>
+</head>
+<body>
+<div id="page">
+    <h1>Messages</h1>
+    <div class="table-row">
+        <div class="table-button">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select a message
+                    <span class="caret"></span>
+                </button>
+                <ul id="classDropdown" class="dropdown-menu btn-block" aria-labelledby="dropdownMenu2">
+                    <li><a href="#">Add new message</a></li>
+                    <li role="separator" class="divider"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <textarea id="message-content" class="form-control" rows="3"></textarea>
+    <h3 id="isPalindrome"></h3>
+</div>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModal">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="new-message-title" class="control-label">Title:</label>
+                        <input type="text" class="form-control" id="new-message-title">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-message-content" class="control-label">Content:</label>
+                        <textarea class="form-control" id="new-message-content"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addNewClass()">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
 </html>

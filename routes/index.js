@@ -41,7 +41,7 @@ router.route('/messages').get(function(req,res)  {
                 res.send(err);
             else
                 res.json(messages);
-        })
+        });
     });
 
 /* Gets a specific message */
