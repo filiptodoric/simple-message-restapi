@@ -1,5 +1,9 @@
 # A simple REST API for messages
 
+*Web App:* http://orangahang.com/
+
+*API:* http://orangahang.com/api/
+
 # Architecture 
 **Back End:** Node.js with the Express.js framework
 
