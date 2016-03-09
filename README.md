@@ -81,3 +81,10 @@ Docker maps port `8080` inside the container to port `80` of the machine. Visit 
 - *Use:* Deletes the message with the specified ID from the database.
 - *Returns:* `{ message: 'The message has been deleted.'}`
 
+# Sequence diagrams
+
+![alt text](http://i.imgur.com/dqbHptw.png "GET MESSAGES")
+![alt text](http://i.imgur.com/AQx27VV.png "POST")
+![alt text](http://i.imgur.com/TRsLQH0.png "GET MESSAGEID")
+![alt text](http://i.imgur.com/kWpF8E5.png "DELETE")
+
