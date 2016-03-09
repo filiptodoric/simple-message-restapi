@@ -31,6 +31,16 @@ This will install all the dependencies from the `package.json` file.
 3. When NPM is finished installing, start the server: `npm start`
 4. `localhost:8080` on your web browser. Server is now running locally. 
 
+# How to run tests
+
+*(Mocha and Chai are included as dev dependicies in this package. 
+This means everything should work fine, however, if you get an error you may need to install 
+them globally with the `-g` flag.)* 
+
+1. In terminal start the server. (`npm start` or `./bin/www`)
+2. In another terminal window run the tests with `mocha`
+3. Tada! The tests have ran. Results will be outputted to the terminal.
+
 
 # How to create the Docker image and deploy to your server
 1. SSH into your server. 
