@@ -4,18 +4,23 @@
 **Back End:** Node.js with the Express.js framework
 
 **Database:** MongoDB hosted w/ mLab and Mongoose as the ODM
-    - Messages are stored in the databse using the following Schema:
-        `{
+
+   - Messages are stored in the database using the following Mongoose Schema:
+   
+        {
             title: String,
             content: String,
             isPalindrome: Boolean
-        }`
+        }
 
 **Front End:** HTML/JavaScript/Bootstrap
 
 # FYI
 The application has been tested and deployed on a DigitalOcean VPS via docker. The Dockerfile is included in this repository. 
-**The following instructions require you to have:**
+
+**Visit the current running version on http://www.orangahang.com/**
+
+The following instructions require you to have:
  - NPM and Docker installed
  - Ubuntu (Other OSes will most likely work but I have not tried them myself).
 
@@ -42,6 +47,8 @@ Docker maps port `8080` inside the container to port `80` of the machine. Visit 
 # REST API Documentation
 
 **API requests are prefixed with `/api/`**
+
+- For example: http://orangahang.com/api/messages
 
 `GET /messages`: Returns a JSON array of all the messages in the database. 
 
