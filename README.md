@@ -60,11 +60,20 @@ Docker maps port `8080` inside the container to port `80` of the machine. Visit 
 
 - For example: http://orangahang.com/api/messages
 
-`GET /messages`: Returns a JSON array of all the messages in the database. 
+`GET /messages`
+- *Use:* Get all the messages in the database. 
+- *Returns:* a JSON array of all the messages in the database. 
 
-`POST /messages`: In the body of the request include: `title: String` and `content: String`. This returns: `{ message: 'New message has been created.'}` This creates a new message and saves it to the database. At this point the message is evaluated on whether or not it is a palindrome. This is saved as a Boolean in the database.
+`POST /messages`
+- *Use:* Creates a new message and saves it to the database.
+- *Request:* in the body include: `title: String` and `content: String`. 
+- *Returns:* `{ message: 'New message has been created.'}`  At this point the message is evaluated on whether or not it is a palindrome. This is saved as a Boolean in the database.
 
-`GET /messages/:message_id`: Returns the message with the specified ID as a JSON. 
+`GET /messages/:message_id`
+- *Use:* Gets a spsecefic message
+- *Return:* message with the specified ID as a JSON. 
 
-`DELETE /messages/:message_id`: Deletes the message with the specified ID from the database.
+`DELETE /messages/:message_id` 
+- *Use:* Deletes the message with the specified ID from the database.
+- *Returns:* `{ message: 'The message has been deleted.'}`
 
