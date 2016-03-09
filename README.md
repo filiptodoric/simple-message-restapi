@@ -4,7 +4,7 @@
 
 *API:* http://orangahang.com/api/
 
-# Architecture 
+## Architecture 
 **Back End:** Node.js with the Express.js framework
 
 **Database:** MongoDB hosted w/ mLab and Mongoose as the ODM
@@ -19,7 +19,7 @@
 
 **Front End:** HTML/JavaScript/Bootstrap
 
-# FYI
+## FYI
 The application has been tested and deployed on a DigitalOcean VPS via docker. The Dockerfile is included in this repository. 
 
 **Visit the current running version on http://www.orangahang.com/**
@@ -28,14 +28,14 @@ The following instructions require you to have:
  - NPM and Docker installed
  - Ubuntu (Other OSes will most likely work but I have not tried them myself).
 
-# How to build and run locally
+## How to build and run locally
 1. Clone this repository: `git clone https://github.com/filiptodoric/simple-message-restapi.git`
 2. Move into the newly created directory and run: `npm install`
 This will install all the dependencies from the `package.json` file.
 3. When NPM is finished installing, start the server: `npm start`
 4. `localhost:8080` on your web browser. Server is now running locally. 
 
-# How to run tests
+## How to run tests
 
 *(Mocha and Chai are included as dev dependicies in this package. 
 This means everything should work fine, however, if you get an error you may need to install 
@@ -46,7 +46,7 @@ them globally with the `-g` flag.)*
 3. Tada! The tests have ran. Results will be outputted to the terminal.
 
 
-# How to create the Docker image and deploy to your server
+## How to create the Docker image and deploy to your server
 1. SSH into your server. 
 2. Clone this repository to the home directory: `git clone https://github.com/filiptodoric/simple-message-restapi.git`
 3. Move into the newly created directory. 
@@ -58,7 +58,7 @@ To create a container from the image run the following command in terminal:
 
 Docker maps port `8080` inside the container to port `80` of the machine. Visit the IP of your server and you will now have the API running. 
 
-# REST API Documentation
+## REST API Documentation
 
 **API requests are prefixed with `/api/`**
 
@@ -81,7 +81,7 @@ Docker maps port `8080` inside the container to port `80` of the machine. Visit 
 - *Use:* Deletes the message with the specified ID from the database.
 - *Returns:* `{ message: 'The message has been deleted.'}`
 
-# Sequence diagrams
+## Sequence diagrams
 
 [Diagrams can be found in their own file here](https://github.com/filiptodoric/simple-message-restapi/blob/master/DIAGRAMS.md)
 
