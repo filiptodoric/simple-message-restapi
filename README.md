@@ -4,11 +4,18 @@
 **Back End:** Node.js with the Express.js framework
 
 **Database:** MongoDB hosted w/ mLab and Mongoose as the ODM
+    - Messages are stored in the databse using the following Schema:
+        `{
+            title: String,
+            content: String,
+            isPalindrome: Boolean
+        }`
 
 **Front End:** HTML/JavaScript/Bootstrap
 
-The application is hosted on DigitalOcean using docker. The Dockerfile is included in this repository. **The following
-instructions require you to have:**
+# FYI
+The application has been tested and deployed on a DigitalOcean VPS via docker. The Dockerfile is included in this repository. 
+**The following instructions require you to have:**
  - NPM and Docker installed
  - Ubuntu (Other OSes will most likely work but I have not tried them myself).
 

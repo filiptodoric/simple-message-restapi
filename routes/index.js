@@ -13,7 +13,7 @@ router.use(function(req, res, next) {
     next();
 });
 
-/* No params being passes, return message. */
+/* No params being passed, return the message. */
 router.get('/', function(req, res) {
   res.json({message: 'Connected to the API'});
 });
@@ -45,8 +45,9 @@ router.route('/messages')
         });
     });
 
-/* Gets a specific message */
+
 router.route('/messages/:message_id')
+    /* Gets the message with that id */
     .get(function(req, res) {
         Message.findById(req.params.message_id, function(err, message)  {
             if(err)
@@ -56,7 +57,7 @@ router.route('/messages/:message_id')
         })
     })
 
-    /* Delete the message with this id */
+    /* Deletes the message with this id */
     .delete(function(req, res) {
         Message.remove({ _id: req.params.message_id },
             function(err, message)  {
