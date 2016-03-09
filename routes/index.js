@@ -3,7 +3,7 @@ var router = express.Router();
 var Message = require('../models/message');
 
 var isPalindrome = function(content)  {
-    content = content.trim().toLowerCase();
+    content = content.replace(/[^A-Z0-9]/ig, "").trim().toLowerCase();
     return content == content.split('').reverse().join('');
 }
 
