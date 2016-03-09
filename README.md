@@ -83,8 +83,5 @@ Docker maps port `8080` inside the container to port `80` of the machine. Visit 
 
 # Sequence diagrams
 
-![alt text](http://i.imgur.com/dqbHptw.png "GET MESSAGES")
-![alt text](http://i.imgur.com/AQx27VV.png "POST")
-![alt text](http://i.imgur.com/TRsLQH0.png "GET MESSAGEID")
-![alt text](http://i.imgur.com/kWpF8E5.png "DELETE")
+[Diagrams can be found in their own file here](https://github.com/filiptodoric/simple-message-restapi/blob/master/DIAGRAMS.md)
 
