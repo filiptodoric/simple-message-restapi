@@ -1,9 +1,5 @@
 # A simple REST API for messages
 
-*Web App:* http://orangahang.com/
-
-*API:* http://orangahang.com/api/
-
 ## Architecture 
 **Back End:** Node.js with the Express.js framework
 
@@ -21,8 +17,6 @@
 
 ## FYI
 The application has been tested and deployed on a DigitalOcean VPS via docker. The Dockerfile is included in this repository. 
-
-**Visit the current running version on http://www.orangahang.com/**
 
 The following instructions require you to have:
  - NPM and Docker installed
@@ -62,7 +56,7 @@ Docker maps port `8080` inside the container to port `80` of the machine. Visit 
 
 **API requests are prefixed with `/api/`**
 
-- For example: http://orangahang.com/api/messages
+- For example: localhost/api/messages
 
 `GET /messages`
 - *Use:* Get all the messages in the database. 
